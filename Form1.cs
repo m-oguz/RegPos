@@ -22,7 +22,6 @@ namespace RegPos
                   "User id=regpos;" +
                   "Password=ziX5/*>>1q";
                 conn.Open();
-                MessageBox.Show("Connected");
 
 
                 List<string> products = new List<string>();
@@ -67,7 +66,7 @@ namespace RegPos
                 }
                 
                 conn.Close();
-                MessageBox.Show("Connection Closed!");
+
             }
             
             }
@@ -83,8 +82,33 @@ namespace RegPos
 
             CategoryDal categoryDal = new CategoryDal();
             categoryDal.Add(category);
+            textBoxCategoryId.Text = "";
+            textBoxCategoryName.Text = "";
+            textBoxSubCategoryOf.Text = "";
+            textBoxDetails.Text = "";
 
             
+        }
+
+        private void buttonAddProduct_Click(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            product.ProductId = Int32.Parse(textBoxProductId.Text); 
+            product.ProductName = textBoxProductName.Text;
+            product.BarCode = Int32.Parse(textBoxBarCode.Text);
+            product.CategoryId = Int32.Parse(textBoxCategory.Text);
+            product.UnitPrice = Double.Parse(textBoxUnitPrice.Text);
+            product.VatGroupId = Int32.Parse(textBoxVat.Text);
+            product.Details = textBoxDetails.Text;
+            product.PhotoLink = textBoxProductPhoto.Text;
+
+            ProductDal productDal = new ProductDal();
+            productDal.Add(product);
+
+           
+
+
+
         }
     }
     }
