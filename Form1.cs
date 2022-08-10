@@ -1,3 +1,6 @@
+using RegPos.Business.Concrete;
+using RegPos.DataAccess.Concrete.SQLDatabase;
+using RegPos.Entities.Concrete;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -14,10 +17,10 @@ namespace RegPos
 
 
                 conn.ConnectionString =
-                  "Data Source=************************************************************;" +
-                  "Initial Catalog=*******************************************************;" +
-                  "User id=*****************************************************************;" +
-                  "Password=****************************************************************";
+                  "Data Source=regpos.database.windows.net;" +
+                  "Initial Catalog=regpos;" +
+                  "User id=regpos;" +
+                  "Password=ziX5/*>>1q";
                 conn.Open();
                 MessageBox.Show("Connected");
 
@@ -28,7 +31,7 @@ namespace RegPos
                 products.Add("OnePlus");
                 products.Add("Iphone 13");
                 products.Add("Samsung");
-                products.Add("Spaghetti");
+               /* products.Add("Spaghetti");
                 products.Add("Baklava");
                 products.Add("Croissant");
                 products.Add("Lohi");
@@ -43,6 +46,9 @@ namespace RegPos
                 products.Add("Fairy");
                 products.Add("Candy");
                 products.Add("Ikea ");
+               */
+
+
 
                 Button button;
                 int position = 0;
@@ -61,9 +67,24 @@ namespace RegPos
                 }
                 
                 conn.Close();
+                MessageBox.Show("Connection Closed!");
             }
             
             }
 
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            Category category = new Category();
+            category.CategoryId = Int32.Parse(textBoxCategoryId.Text);
+            category.CategoryName = textBoxCategoryName.Text;
+            category.SubCategoryOf = Int32.Parse(textBoxSubCategoryOf.Text);
+            category.Details = textBoxDetails.Text;
+
+
+            CategoryDal categoryDal = new CategoryDal();
+            categoryDal.Add(category);
+
+            
         }
+    }
     }

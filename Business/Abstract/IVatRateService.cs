@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegPos.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace RegPos.Business.Abstract
 {
     internal interface IVatRateService
     {
+        List<VatRate> GetAll();
+
     }
 }

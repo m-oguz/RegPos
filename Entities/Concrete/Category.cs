@@ -9,11 +9,12 @@ namespace RegPos.Entities.Concrete
 {
     internal class Category : IEntity
     {
+        public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public int SubCategoryOf { get; set; }
         public bool IsActive { get; set; }
         public string Details { get; set; }
-        public string PhotoLink { get; set; }
+        public string? PhotoLink { get; set; }
 
 
 
